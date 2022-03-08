@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Container = (props) => {
   return (
@@ -16,9 +15,5 @@ const defaultStyle = {
   alignItems: 'center',
   minHeight: '100vh'
 }
-
-// Container.propTypes = {
-//   style: PropTypes.instanceO)
-// }
 
 export default Container;
