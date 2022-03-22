@@ -12,11 +12,11 @@ const Input = (props) => {
         }
         name={props.name}
         id={props.id}
+        value={props.value}
+        onChange={props.onChange}
         type={props.type || "text"}
         placeholder={props.placeholder}
-        onChange={props.onChange}
         required={props.required || false}
-        value={props.value}
         accept={props.accept}
         multiple={props.multiple}
         disabled={props.disabled}
