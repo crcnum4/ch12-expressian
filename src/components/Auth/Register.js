@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 import NewUserForm from './NewUserForm';
 import Container from '../common/Container';
 import Splash from '../common/Splash';
@@ -15,6 +16,8 @@ const Register = (props) => {
     isMember: false,
     licenseNumber: ''
   })
+
+  const navigate = useNavigate();
 
   const updateForm = (field, value) => {
     setNewUser({
@@ -36,17 +39,38 @@ const Register = (props) => {
     try {
       const res = await axios.post(`${apiHostUrl}/api/auth/signup`, data);
       console.log(res.data)
+      login(data);
     } catch (err) {
       console.error(err.response.data);
     }
   }
 
-  const login = (data) => {
-
+  const login = async (data) => {
+    try {
+      const res = await axios.post(`${apiHostUrl}/api/auth/signin`, data);
+      console.log(res.data);
+      createCustomer(data, res.data.token);
+    } catch (err) {
+      console.error(err.response.data);
+    }
   }
 
-  const createCustomer = (data, token) => {
-
+  const createCustomer = async (data, token) => {
+    try {
+      const res = await axios.post(
+        `${apiHostUrl}/customers`, 
+        data, 
+        {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        }
+      );
+      console.log(res.data);
+      navigate('/login');
+    } catch (err) {
+      console.error(err.response.data);
+    }
   }
 
   return (
