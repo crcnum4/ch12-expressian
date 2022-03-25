@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 const AuthContext = React.createContext([{}, () => {}]); 
 
 const AuthProvider = (props) => {
-  const [auth, setAuth] = useState({token: null, profile: null});
+  const [auth, setAuth] = useState({token: null, profile: null, roles: []});
 
   return (
     <AuthContext.Provider value={[auth, setAuth]}>

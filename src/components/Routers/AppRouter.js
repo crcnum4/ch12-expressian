@@ -4,6 +4,7 @@ import Home from '../Home/Home';
 import Navbar from '../Navbar/Navbar';
 // import components to show
 import Register from '../Auth/Register';
+import Login from '../Auth/Login';
 
 const AppRouter = () => {
   return (
@@ -13,6 +14,7 @@ const AppRouter = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   ) 
